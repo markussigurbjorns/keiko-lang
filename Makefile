@@ -1,16 +1,16 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -g -DDEBUG_TRACE_EXECUTION
+CFLAGS = -Wall -Werror -std=c11 -g -DDEBUG_TRACE_EXECUTION -fsanitize=address
 LDFLAGS =
 
 # Output executable
 TARGET = main
 
 # Source files
-SRCS = chunk.c debug.c main.c memory.c value.c vm.c
+SRCS = chunk.c debug.c main.c memory.c value.c vm.c compiler.c scanner.c
 
 # Header files
-HEADERS = chunk.h common.h debug.h memory.h value.h vm.h
+HEADERS = chunk.h common.h debug.h memory.h value.h vm.h compiler.h scanner.h
 
 # Object files (replace .c with .o)
 OBJS = $(SRCS:.c=.o)
