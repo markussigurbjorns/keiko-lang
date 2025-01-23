@@ -1,6 +1,9 @@
+##DEBUG FLAGS
+#-DDEBUG_PRINT_CODE -DDEBUG_TRACE_EXECUTION
+
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Werror -std=c11 -g -DDEBUG_TRACE_EXECUTION -fsanitize=address
+CFLAGS = -Wall -Werror -std=c11 -g -DDEBUG_PRINT_CODE -fsanitize=address
 LDFLAGS =
 
 # Output executable
