@@ -7,13 +7,13 @@ CFLAGS = -Wall -Werror -std=c11 -g -DDEBUG_PRINT_CODE -fsanitize=address
 LDFLAGS =
 
 # Output executable
-TARGET = main
+TARGET = keiko
 
 # Source files
-SRCS = chunk.c debug.c main.c memory.c value.c vm.c compiler.c scanner.c
+SRCS = chunk.c debug.c main.c memory.c value.c vm.c compiler.c scanner.c object.c
 
 # Header files
-HEADERS = chunk.h common.h debug.h memory.h value.h vm.h compiler.h scanner.h
+HEADERS = chunk.h common.h debug.h memory.h value.h vm.h compiler.h scanner.h object.h
 
 # Object files (replace .c with .o)
 OBJS = $(SRCS:.c=.o)
