@@ -10,10 +10,10 @@ LDFLAGS =
 TARGET = keiko
 
 # Source files
-SRCS = chunk.c debug.c main.c memory.c value.c vm.c compiler.c scanner.c object.c
+SRCS = chunk.c debug.c main.c memory.c value.c vm.c compiler.c scanner.c object.c table.c
 
 # Header files
-HEADERS = chunk.h common.h debug.h memory.h value.h vm.h compiler.h scanner.h object.h
+HEADERS = chunk.h common.h debug.h memory.h value.h vm.h compiler.h scanner.h object.h table.h
 
 # Object files (replace .c with .o)
 OBJS = $(SRCS:.c=.o)
