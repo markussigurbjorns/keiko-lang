@@ -13,7 +13,7 @@ var a = 0;
 var b = 1;
 var tmp;
 
-if (n > 2) {
+if (n >= 2) {
     for (var i = 2; i<=n; i=i+1) {
         tmp = a+b;
         a = b;
