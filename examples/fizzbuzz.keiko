@@ -1,0 +1,18 @@
+
+var n = 4;
+
+var out = "";
+
+if (n%3 == 0) {
+    out = out + "fizz";
+}
+
+if (n%5 == 0) {
+    out = out + "buzz";
+}
+
+if (out == "") {
+    print n;
+} else {
+    print out;
+}
