@@ -86,16 +86,18 @@ static InterpretResult run() {
 #define READ_SHORT() \
     (vm.ip += 2, (uint16_t)((vm.ip[-2] << 8) | vm.ip[-1]))
 #define READ_STRING() AS_STRING(READ_CONSTANT())
-#define BINARY_OP(valueType, op) \
+#define BINARY_OP(valueType, op, type) \
     do { \
         if (!IS_NUMBER(peek(0)) || !IS_NUMBER(peek(1))) { \
             runtimeError("Operands must be numbers."); \
             return INTERPRET_RUNTIME_ERROR; \
         } \
-        double b = AS_NUMBER(pop()); \
-        double a = AS_NUMBER(pop()); \
+        type b = (type)AS_NUMBER(pop()); \
+        type a = (type)AS_NUMBER(pop()); \
         push(valueType(a op b)); \
     } while (false) \
+
+
 
 
     for (;;) {
@@ -162,8 +164,8 @@ static InterpretResult run() {
                 push(BOOL_VAL(valuesEqual(a,b)));
                 break;
             }
-            case OP_GREATER:    BINARY_OP(BOOL_VAL  , >); break;
-            case OP_LESS:       BINARY_OP(BOOL_VAL  , <); break;
+            case OP_GREATER:    BINARY_OP(BOOL_VAL  , >, double); break;
+            case OP_LESS:       BINARY_OP(BOOL_VAL  , <, double); break;
             case OP_ADD: {
                 if (IS_STRING(peek(0)) && IS_STRING(peek(1))){
                     concatenate();
@@ -180,9 +182,10 @@ static InterpretResult run() {
                 break;
             }
 
-            case OP_SUBTRACT:   BINARY_OP(NUMBER_VAL, -); break;
-            case OP_MULTIPLY:   BINARY_OP(NUMBER_VAL, *); break;
-            case OP_DIVIDE:     BINARY_OP(NUMBER_VAL, /); break;
+            case OP_SUBTRACT:   BINARY_OP(NUMBER_VAL, -, double); break;
+            case OP_MULTIPLY:   BINARY_OP(NUMBER_VAL, *, double); break;
+            case OP_DIVIDE:     BINARY_OP(NUMBER_VAL, /, double); break;
+            case OP_MOD:        BINARY_OP(NUMBER_VAL, %, int); break;
             case OP_NOT:        
                 push(BOOL_VAL(isFalsey(pop()))); break;
             case OP_NEGATE: 

@@ -1,0 +1,12 @@
+//for (var i = 0; i<4; i=i+1) {
+//    print i;
+//}
+
+var b = 5 % 2;
+
+print b;
+
+//while (b < 5) {
+//    print b;
+//    b = b+1;
+//}
