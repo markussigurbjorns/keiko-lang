@@ -122,7 +122,6 @@ static InterpretResult run() {
             case OP_FALSE:      push(BOOL_VAL(false));    break;
             case OP_POP:        pop();                    break;
             case OP_GET_LOCAL: {
-                printf("yo im in get local!!!!!\n");
                 uint8_t slot = READ_BYTE();
                 push(vm.stack[slot]);
                 break;
@@ -199,23 +198,18 @@ static InterpretResult run() {
                 break;
             }
             case OP_JUMP: {
-                printf("im in OP_JUMP\n");
                 uint16_t offset = READ_SHORT();
                 vm.ip += offset;
                 break;
             }
             case OP_JUMP_IF_FALSE: {
-                printf("im in OP_JUMP_IF_FALSE\n");
                 uint16_t offset = READ_SHORT();
                 if (isFalsey(peek(0))) vm.ip += offset;
                 break;
             }
             case OP_LOOP: {
-                printf("im in OP_LOOOP\n");
                 uint16_t offset = READ_SHORT();
-                printf("im in OP_LOOOP, after reading short\n");
-                vm.ip += offset;
-                printf("im in OP_LOOOP, after incrementing offset\n");
+                vm.ip -= offset;
                 break;
             }
             case OP_RETURN: {
