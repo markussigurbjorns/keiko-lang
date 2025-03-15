@@ -1,6 +1,10 @@
 
-fn test() {
+fn test(a,b,c) {
     print "Im I here?";
+    var l = 0;
+    var k = 2;
+    var j = 3;
 }
 
-print test;
+var a = test;
+print a;
