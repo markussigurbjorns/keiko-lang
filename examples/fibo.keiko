@@ -1,24 +1,9 @@
 
-var n = 10;
-
-if (n >= 0) {
-    print 0;
+fn fibo(n) {
+    if (n < 2) return n;
+    return fibo(n-2) + fibo(n-1);
 }
 
-if (n >= 1) {
-    print 1;
-}
-
-var a = 0;
-var b = 1;
-var tmp;
-
-if (n >= 2) {
-    for (var i = 2; i<=n; i=i+1) {
-        tmp = a+b;
-        a = b;
-        b = tmp;
-        print b;
-    }
-}
-
+var start = clock();
+print fibo(35);
+print clock() - start;

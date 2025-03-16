@@ -1,10 +1,8 @@
 
-fn test(a,b,c) {
-    print "Im I here?";
-    var l = 0;
-    var k = 2;
-    var j = 3;
+fn sum3(a,b,c) {
+    return a+b+c;
 }
 
-var a = test;
-print a;
+
+print sum3(1,2,3);
+
